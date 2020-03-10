@@ -12,5 +12,5 @@ cache:
   # folder with Cypress binary
   - ~/.cache
 script:
-  - npm run test:ci
-  - npm run build
+  - npm run test:ci --prefix scheduler/
+  - npm run build --prefix scheduler/
