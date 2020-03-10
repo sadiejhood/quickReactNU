@@ -23,17 +23,18 @@ const getCourseTerm = course => (
     terms[course.id.charAt(0)]
   );
 
-const TermSelector = ({ state }) => (
+  const TermSelector = ({ state }) => (
     <Button.Group hasAddons>
-    { Object.values(terms)
-        .map(value => 
-          <Button key={value}
-            color={ buttonColor(value === state.term) }
-            onClick={ () => state.setTerm(value) }
-            >
-            { value }
-          </Button>
-        )
+      {Object.values(terms)
+        .map(value =>
+        <Button key={value}
+          data-cy={value}
+          color={buttonColor(value === state.term)}
+          onClick={() => state.setTerm(value)}
+        >
+        {value}
+        </Button>
+      )
     }
     </Button.Group>
   );
@@ -49,6 +50,7 @@ const CourseList = ({ courses, user, db }) => {
         <Button.Group>
         { termCourses.map(course =>
            <Course key={ course.id } course={ course }
+             data-cy={ course.id }
              state={ { selected, toggle } }
              user={ user } 
              db={ db }/>) }

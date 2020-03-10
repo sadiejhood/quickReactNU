@@ -10,14 +10,15 @@ const getCourseNumber = course => (
   course.id.slice(1, 4)
 );
 
-const Course = ({ course, state, db }) => (
-    <Button color={ buttonColor(state.selected.includes(course)) }
+const Course = ({ course, state }) => (
+  <Button
+      data-cy="course"
+      color={ buttonColor(state.selected.includes(course)) }
       onClick={ () => state.toggle(course) }
-      onDoubleClick={ () => moveCourse(course, db) }
       disabled={ hasConflict(course, state.selected) }
       >
       { getCourseTerm(course) } CS { getCourseNumber(course) }: { course.title }
-    </Button>
-  );
+  </Button>
+);
 
 export default Course;

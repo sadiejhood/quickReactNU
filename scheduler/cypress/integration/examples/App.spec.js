@@ -3,4 +3,28 @@ describe ('Test App', () => {
     it ('launches', () => {
       cy.visit ('/');
     });
+  
+    it ('opens with Fall CS 101', () => {
+      cy.visit ('/');
+      cy.get('[data-cy=course]').should('contain', 'Fall CS 101:');
+    });
+
+    it('shows Winter courses when Winter is selected', () => {
+        cy.visit ('/');
+        cy.get('[data-cy=Winter]').click();
+        cy.get('[data-cy=course]').should('contain' ,'Winter');
+    });
+
+    it('shows Spring courses when Spring is selected', () => {
+        cy.visit ('/');
+        cy.get('[data-cy=Spring]').click();
+        cy.get('[data-cy=course]').should('contain' ,'Spring');
+    });
+
+    it('shows courses when  is selected', () => {
+        cy.visit ('/');
+        cy.get("[data-cy=F101]").click();
+        // cy.get('[data-cy=course]').should('contain' ,'Spring');
+    });
+
   });
